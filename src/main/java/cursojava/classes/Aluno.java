@@ -1,6 +1,9 @@
 package cursojava.classes;
 
+import cursojava.Disciplina;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Aluno {
     private String nome;
@@ -14,7 +17,8 @@ public class Aluno {
     private String nomeEscola;
     private String serieMatriculado;
 
-    private ArrayList<Integer> notas = new ArrayList<Integer>();
+    private Disciplina disciplina = new Disciplina();
+
 
 
     //==============>Contrutores<==============
@@ -32,20 +36,10 @@ public class Aluno {
 
     //==============>Metodos<==============
 
-    public void adicionarNotas(int... notas){
-        for(int nota : notas){
-            this.notas.add(nota);
-        }
-    }
+
 
     public double mediaNotas(){
-        int total = 0;
-
-        for( int nota: notas){
-            total += nota;
-        }
-
-        return (double) total / notas.size();
+        return (double) (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
     }
 
     public boolean getAlunoAprovado(){
@@ -136,11 +130,42 @@ public class Aluno {
         this.nomePai = nomePai;
     }
 
-    public ArrayList<Integer> getNotas() {
-        return notas;
+    public Disciplina getDisciplina() {
+        return disciplina;
     }
 
-    public void setNotas(ArrayList<Integer> notas) {
-        this.notas = notas;
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", dataNascimento='" + dataNascimento + '\'' +
+                ", registroGeral='" + registroGeral + '\'' +
+                ", numeroCpf='" + numeroCpf + '\'' +
+                ", nomeMae='" + nomeMae + '\'' +
+                ", nomePai='" + nomePai + '\'' +
+                ", dataMatricula='" + dataMatricula + '\'' +
+                ", nomeEscola='" + nomeEscola + '\'' +
+                ", serieMatriculado='" + serieMatriculado + '\'' +
+                ", disciplina=" + disciplina +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aluno aluno = (Aluno) o;
+        return Objects.equals(numeroCpf, aluno.numeroCpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numeroCpf);
     }
 }

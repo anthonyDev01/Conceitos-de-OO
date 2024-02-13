@@ -1,6 +1,7 @@
 package org.example;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Disciplina;
 
 import javax.swing.*;
 
@@ -18,14 +19,6 @@ public class Main {
         String nomePai = JOptionPane.showInputDialog("Qual é o nome do seu pai? ");
         String dataMatricula = JOptionPane.showInputDialog("Qual foi a data da sua matricula? ");
         String serieMatriculado = JOptionPane.showInputDialog("Qual serie voce esta matriculado? ");
-        String disciplina1 = JOptionPane.showInputDialog("Disciplina 1 ?");
-        int nota1 = Integer.parseInt(JOptionPane.showInputDialog("nota 1 ?"));
-        String disciplina2 = JOptionPane.showInputDialog("Disciplina 2 ?");
-        int nota2 = Integer.parseInt(JOptionPane.showInputDialog("nota 2 ?"));
-        String disciplina3 = JOptionPane.showInputDialog("Disciplina 3 ?");
-        int nota3 = Integer.parseInt(JOptionPane.showInputDialog("nota 3 ?"));
-        String disciplina4 = JOptionPane.showInputDialog("Disciplina 4 ?");
-        int nota4 = Integer.parseInt(JOptionPane.showInputDialog("nota 4 ?"));
 
         aluno1.setNome(nome);
         aluno1.setIdade(idade);
@@ -36,14 +29,19 @@ public class Main {
         aluno1.setNomePai(nomePai);
         aluno1.setDataMatricula(dataMatricula);
         aluno1.setSerieMatriculado(serieMatriculado);
-        aluno1.getDisciplina().setDisciplina1(disciplina1);
-        aluno1.getDisciplina().setNota1(nota1);
-        aluno1.getDisciplina().setDisciplina2(disciplina2);
-        aluno1.getDisciplina().setNota2(nota2);
-        aluno1.getDisciplina().setDisciplina3(disciplina3);
-        aluno1.getDisciplina().setNota3(nota3);
-        aluno1.getDisciplina().setDisciplina4(disciplina4);
-        aluno1.getDisciplina().setNota4(nota4);
+
+
+        for(int pos = 1; pos <= 4; pos++){
+            String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ?");
+            int notaDisciplina = Integer.parseInt(JOptionPane.showInputDialog("Nome da nota " + pos + " ?"));
+
+            Disciplina disciplina = new Disciplina();
+            disciplina.setDisciplina(nomeDisciplina);
+            disciplina.setNota(notaDisciplina);
+
+            aluno1.getDisciplina().add(disciplina);
+        }
+
 
         System.out.println(aluno1.getNome() + " tem " + aluno1.getIdade() + " e esta no " + aluno1.getSerieMatriculado() + " ano do ensino medio!");
         System.out.println("A media de " + aluno1.getNome() + " Foi: " + aluno1.mediaNotas());

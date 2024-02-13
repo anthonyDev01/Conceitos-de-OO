@@ -1,8 +1,7 @@
 package cursojava.classes;
 
-import cursojava.Disciplina;
-
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Aluno {
@@ -17,19 +16,19 @@ public class Aluno {
     private String nomeEscola;
     private String serieMatriculado;
 
-    private Disciplina disciplina = new Disciplina();
-
+    private List<Disciplina> disciplinas = new ArrayList<>();
 
 
     //==============>Contrutores<==============
-    public Aluno(){
+    public Aluno() {
 
     }
-    public  Aluno(String nomePadrao){
+
+    public Aluno(String nomePadrao) {
         nome = nomePadrao;
     }
 
-    public  Aluno(String nomePadrao, int idadePadrao){
+    public Aluno(String nomePadrao, int idadePadrao) {
         nome = nomePadrao;
         idade = idadePadrao;
     }
@@ -37,23 +36,28 @@ public class Aluno {
     //==============>Metodos<==============
 
 
+    public double mediaNotas() {
+        double somaNotas = 0.0;
+        for(Disciplina disciplina : disciplinas){
 
-    public double mediaNotas(){
-        return (double) (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
+            somaNotas  += disciplina.getNota();
+        }
+
+        return somaNotas / disciplinas.size();
     }
 
-    public boolean getAlunoAprovado(){
+    public boolean getAlunoAprovado() {
         return mediaNotas() >= 5;
     }
 
 
     //==============>Getter and Setters<==============
 
-    public void setNome(String nome){
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
@@ -130,12 +134,12 @@ public class Aluno {
         this.nomePai = nomePai;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public List<Disciplina> getDisciplina() {
+        return disciplinas;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setDisciplina(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
 
@@ -151,9 +155,7 @@ public class Aluno {
                 ", nomePai='" + nomePai + '\'' +
                 ", dataMatricula='" + dataMatricula + '\'' +
                 ", nomeEscola='" + nomeEscola + '\'' +
-                ", serieMatriculado='" + serieMatriculado + '\'' +
-                ", disciplina=" + disciplina +
-                '}';
+                ", serieMatriculado='" + serieMatriculado + '\'' + '}';
     }
 
     @Override

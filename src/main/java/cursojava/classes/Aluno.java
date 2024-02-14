@@ -46,8 +46,18 @@ public class Aluno {
         return somaNotas / disciplinas.size();
     }
 
-    public boolean getAlunoAprovado() {
-        return mediaNotas() >= 5;
+    public String getAlunoAprovado() {
+        if(mediaNotas() >= 5){
+            if(mediaNotas() >= 7){
+                return "Aluno está aprovado";
+            }
+            else {
+                return "Aluno está de recuperacão";
+            }
+        }
+        else {
+            return  "Aluno esta reprovado";
+        }
     }
 
 
@@ -155,7 +165,9 @@ public class Aluno {
                 ", nomePai='" + nomePai + '\'' +
                 ", dataMatricula='" + dataMatricula + '\'' +
                 ", nomeEscola='" + nomeEscola + '\'' +
-                ", serieMatriculado='" + serieMatriculado + '\'' + '}';
+                ", serieMatriculado='" + serieMatriculado + '\'' +
+                ", disciplinas=" + disciplinas +
+                '}';
     }
 
     @Override

@@ -1,17 +1,13 @@
 package cursojava.classes;
 
+import cursojava.constantes.StatusAluno;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Aluno {
-    private String nome;
-    private int idade;
-    private String dataNascimento;
-    private String registroGeral;
-    private String numeroCpf;
-    private String nomeMae;
-    private String nomePai;
+public class Aluno extends Pessoa{
+
     private String dataMatricula;
     private String nomeEscola;
     private String serieMatriculado;
@@ -49,15 +45,24 @@ public class Aluno {
     public String getAlunoAprovado() {
         if(mediaNotas() >= 5){
             if(mediaNotas() >= 7){
-                return "Aluno está aprovado";
+                return StatusAluno.APROVADO;
             }
             else {
-                return "Aluno está de recuperacão";
+                return StatusAluno.RECUPERACAO;
             }
         }
         else {
-            return  "Aluno esta reprovado";
+            return  StatusAluno.REPROVADO;
         }
+    }
+
+    @Override
+    public boolean pessoaMaiorIdade() {
+        return idade >= 21;
+    }
+
+    public String msgMaiorIdade(){
+        return this.pessoaMaiorIdade() ? "Aluno é maior de idade" : "aluno não é maior de idade";
     }
 
 

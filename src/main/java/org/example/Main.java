@@ -1,8 +1,12 @@
 package org.example;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
+import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
+import cursojava.interfaces.PermitirAcesso;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,9 +20,7 @@ public class Main {
         String login = JOptionPane.showInputDialog("Informe o login:");
         String senha = JOptionPane.showInputDialog("Informe a senha:");
 
-        if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
-
-
+        if (new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
             List<Aluno> alunos = new ArrayList<>();
             HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
@@ -46,7 +48,6 @@ public class Main {
                 aluno1.setDataMatricula(dataMatricula);
                 aluno1.setSerieMatriculado(serieMatriculado);*/
 
-
                 for (int pos = 1; pos <= 4; pos++) {
                     String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ?");
                     int notaDisciplina = Integer.parseInt(JOptionPane.showInputDialog("Nome da nota " + pos + " ?"));
@@ -70,7 +71,6 @@ public class Main {
                         posicao++;
                         continuarRemovendo = JOptionPane.showConfirmDialog(null, "Deseja continuar removendo?");
                     }
-
                 }
                 alunos.add(aluno1);
             }
@@ -96,7 +96,6 @@ public class Main {
                     System.out.println(alunoAprovado.getNome() + "Foi " + alunoAprovado.getAlunoAprovado() + "com media " + alunoAprovado.mediaNotas());
                 }
 
-
                 System.out.println("======================ALunos Reprovados======================");
                 for (Aluno alunoReprovado : maps.get(StatusAluno.REPROVADO)) {
                     System.out.println(alunoReprovado.getNome() + "Foi " + alunoReprovado.getAlunoAprovado() + "com media " + alunoReprovado.mediaNotas());
@@ -106,9 +105,10 @@ public class Main {
                 for (Aluno alunoRecuperacao : maps.get(StatusAluno.RECUPERACAO)) {
                     System.out.println(alunoRecuperacao.getNome() + "Foi " + alunoRecuperacao.getAlunoAprovado() + "com media " + alunoRecuperacao.mediaNotas());
                 }
-
             }
-
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "acesso negado");
         }
     }
 }

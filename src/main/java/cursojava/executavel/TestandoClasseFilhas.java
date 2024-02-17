@@ -21,6 +21,7 @@ public class TestandoClasseFilhas {
         System.out.println(aluno.pessoaMaiorIdade() + " - " + aluno.msgMaiorIdade());
         System.out.println(diretor.pessoaMaiorIdade());
         System.out.println(secretario.pessoaMaiorIdade());
+        System.out.println("salario do aluno é : " + aluno.salario());
 
 
 

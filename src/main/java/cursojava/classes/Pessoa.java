@@ -1,6 +1,6 @@
 package cursojava.classes;
 
-public class Pessoa {
+public abstract class Pessoa {
     protected String nome;
     protected int idade;
     protected String dataNascimento;
@@ -71,4 +71,6 @@ public class Pessoa {
     public boolean pessoaMaiorIdade(){
         return idade >= 18;
     }
+
+    public abstract double salario();
 }

@@ -3,14 +3,22 @@ package cursojava.classes;
 import java.util.Objects;
 
 public class Disciplina {
-    private int nota;
+    private double[] nota = new double[4];
     private String disciplina;
 
-    public int getNota() {
+    public double getMedia(){
+        double somaNotas = 0.0;
+        for (int pos = 0; pos < nota.length; pos++){
+            somaNotas += nota[pos];
+        }
+        return somaNotas / 4;
+    }
+
+    public double[] getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double[] nota) {
         this.nota = nota;
     }
 
